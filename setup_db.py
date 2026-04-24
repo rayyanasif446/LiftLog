@@ -1,10 +1,11 @@
-#Data base setup and test
+#Data base setup and test script
 import sqlite3
 from werkzeug.security import generate_password_hash
 
+#connect to database file
 conn = sqlite3.connect('.database/liftlog.db')
 
-
+#create the user table to store authentication details
 conn.execute('''
     CREATE TABLE IF NOT EXISTS Users (
         id       INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,25 +23,27 @@ conn.execute('''
         sets     INTEGER NOT NULL,
         reps     INTEGER NOT NULL,
         weight_kg REAL   NOT NULL,
-        FOREIGN KEY (user_id REFERENCES User(id)
+        FOREIGN KEY (user_id) REFERENCES Users(id)
     )
 ''')
 
 #seed test users (randomly genereated)
-('marcus', 'ironmind')
-('priya', 'deadlift99')
-('zach', "squatking")
-('taylah', 'gainz2026')
-('oliver', 'benchpress')
+users = [
+('marcus', 'ironmind'),
+('priya', 'deadlift99'),
+('zach', "squatking"),
+('taylah', 'gainz2026'),
+('oliver', 'benchpress'),
+]
 
 for username, password in users:
     conn.execute(
-        'INSERT OR IGNORE INTO Users(username, passwor) VALUES(?, ?)',
+        'INSERT OR IGNORE INTO Users(username, password) VALUES(?, ?)',
         (username, generate_password_hash(password))
     )
 conn.commit()
 
-#seed test sessions (just to give an example)
+#seed test workout sessions 
 sessions = [
     (1, '10-04-2026', 'Bench Press',            4, 8, 80.0),
     (1, '12-04-2026', 'Incline Dumbell Press',  3, 10, 30.0),
@@ -52,11 +55,14 @@ sessions = [
     (5, '15-04-2026', 'Bulgarian Split squat',  4, 6, 60.0),
     (5, '12-04-2026', 'Overhead Press',         3, 15, 12.0),
 ]
+#insert all sessions into the same datbase
 conn.executemany(
-    'INSERT OR IGNOR INTO Sessions'
-    '(user_id, date, exercise, sets, reps, weight_kg)'
-    ' VALUES(?, ?, ?, ?, ?, ?)'
+    'INSERT OR IGNORE INTO Sessions '
+    '(user_id, date, exercise, sets, reps, weight_kg) '
+    ' VALUES(?, ?, ?, ?, ?, ?)',
     sessions
 )
+
 conn.commit()
 conn.close()
+print('database complete')
