@@ -27,13 +27,13 @@ conn.execute('''
     )
 ''')
 
-#seed test users (randomly genereated)
+#seed test users 
 users = [
-('marcus', 'ironmind'),
-('priya', 'deadlift99'),
+('jeff', 'ironmind'),
+('bob', 'deadlift99'),
 ('zach', "squatking"),
-('taylah', 'gainz2026'),
-('oliver', 'benchpress'),
+('billy', 'gainz2026'),
+('katy', 'benchpress'),
 ]
 
 for username, password in users:

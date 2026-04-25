@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTFF-8" />
+    <meta name="viewport" content="widthdevice-width, initial scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self':"
+
+     <title>LiftLog</title>
+
+     <link rel="stylesheet" href="static/css/style.css" />
+     <link rel="stylesheet" href="static/manifest.json" />
+     <link rel="icon" type="image/x-icon" href="static/images/logo.png"
+</head>
+<body>
+    <h1 class="banner">LiftLog - Workout Logger</h1>h1>
+
+    <nav>
+        <a href="/">Home</a>
+        {#checks if user is currently logged in#}
+        {% if not session['username'] %}
+            <a href="login">Login</a>
+            <a href="register">Register</a>
+        {% else %}
+            {#if user IS logged in show the add session and logout links instead#}
+            <a href="add">Add Sessions</a>
+            <a href="logout">Logout</a>
+            {% endif %}
+    </nav>
+
+    <main>
+        {#placeholder#}
+        {% block content %}{% endblock %}
+    </main>
+    <script src="static/js/app.js"></script>
+</body>
+</html>
