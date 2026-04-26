@@ -28,6 +28,12 @@ def Login():
             return redirect('/')
     return render_template('login.html')
 
+#logout
+@app.route('/logout')
+def Logout():
+    session.clear()
+    return redirect('/')
+
 #register page
 @app.route('/register', methods=['GET', 'POST'])
 def Register():
@@ -76,10 +82,6 @@ def Edit(sess_id):
         db.UpdateSession(sess_id, date, exercise, sets, reps, weight_kg)
         return redirect('/')
     return render_template('edit.html', record=record)
-
-
-
-
 
 
 app.run(debug=True, port=5000)

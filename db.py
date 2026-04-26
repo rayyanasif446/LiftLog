@@ -67,3 +67,19 @@ def AddSession(user_id, date, exercise, sets, reps, weight_kg):
     )
     database.commit()
     return True
+
+def UpdateSession(sess_id, date, exercise, sets, reps, weight_kg):
+    database = GetDB()
+    database.execute(
+        'UPDATE Sessions SET date=?, exercise=?, sets=?, reps=?, weight_kg=?'
+        ' WHERE id=?',
+        (date, exercise, sets, reps, weight_kg, sess_id)
+    )
+    database.commit()
+    
+def DeleteSession(sess_id):
+    database = GetDB()
+    database.execute(
+        'DELETE FROM Sessions WHERE id=?', (sess_id,)
+    )
+    database.commit()

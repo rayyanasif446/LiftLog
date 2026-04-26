@@ -29,11 +29,11 @@ conn.execute('''
 
 #seed test users 
 users = [
-('jeff', 'ironmind'),
-('bob', 'deadlift99'),
+('marcus', 'ironmind'),
+('priya', 'deadlift99'),
 ('zach', "squatking"),
-('billy', 'gainz2026'),
-('katy', 'benchpress'),
+('taylah', 'gainz2026'),
+('oliver', 'benchpress'),
 ]
 
 for username, password in users:
