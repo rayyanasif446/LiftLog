@@ -7,44 +7,29 @@
     "theme_color": "#f4f4f4",
     "orientation": "portrait-primary",
     "icons": [
-        {
-            "src": "icons/icon-128x128.png",
-            "sizes": "128x128",
-            "type": "image/png",
-            "purpose": "maskable any"
-        },
-        {
-            "src": "icons/icon-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "maskable any"
-        },
-        {
-            "src": "icons/icon-384x384.png",
-            "sizes": "384x384",
-            "type": "image/png",
-            "purpose": "maskable any"
-        },
-        {
-            "src": "icons/icon-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable any"
-        }
-    ],
-    "screenshots": [
-        {
-            "src": "icons/Desktop.png",
-            "sizes": "1920x1080",
-            "type": "image/png",
-            "label": "Desktop view"
-        },
-        {
-            "src": "icons/Mobile.png",
-            "sizes": "1080x1920",
-            "type": "image/png",
-            "form_factor": "narrow",
-            "label": "Mobile view"
-        }
-    ]
+    {
+        "src": "/static/icons/icon-128x128.png",
+        "sizes": "128x128",
+        "type": "image/png",
+        "purpose": "maskable any"
+    },
+    {
+        "src": "/static/icons/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "maskable any"
+    },
+    {
+        "src": "/static/icons/icon-384x384.png",
+        "sizes": "384x384",
+        "type": "image/png",
+        "purpose": "maskable any"
+    },
+    {
+        "src": "/static/icons/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable any"
+    }
+]
 }

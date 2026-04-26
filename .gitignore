@@ -1,7 +1,0 @@
-.database/
-
-__pycache__/
-
-*.pyc
-
-.workingdocuments
