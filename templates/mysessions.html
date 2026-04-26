@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>My Sessions</h2>
+
+<div class="container">
+    <p>Showing all sessions logged by <strong>{{ session['username'] }}</strong></p>
+    <a href="/add"><button>+ Add Session</button></a>
+</div>
+<br>
+
+<table class="session_table">
+    <thead>
+        <th>Date</th>
+        <th>Exercise</th>
+        <th>Sets</th>
+        <th>Reps</th>
+        <th>Weight (kg)</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+    {% for s in sessions %}
+        <tr>
+            <td>{{ s['date'] }}</td>
+            <td>{{ s['exercise'] }}</td>
+            <td>{{ s['sets'] }}</td>
+            <td>{{ s['reps'] }}</td>
+            <td>{{ s['weight_kg'] }}</td>
+            <td>
+                <a class="edit-btn" href="/edit/{{ s['id'] }}">Edit</a>
+                <a class="del-btn" href="/delete/{{ s['id'] }}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

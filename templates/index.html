@@ -15,6 +15,20 @@
 
 <br>
 
+<div class="sort-bar">
+    <form method="get" action="/">
+        <label>Sort by: </label>
+        <select name="sort" onchange="this.form.submit()">
+            <option value="date_desc" {% if sort == 'date_desc' %}selected{% endif %}>Date (Newest First)</option>
+            <option value="date_asc"  {% if sort == 'date_asc'  %}selected{% endif %}>Date (Oldest First)</option>
+            <option value="exercise"  {% if sort == 'exercise'  %}selected{% endif %}>Exercise (A-Z)</option>
+            <option value="weight"    {% if sort == 'weight'    %}selected{% endif %}>Weight (Heaviest First)</option>
+        </select>
+    </form>
+</div>
+
+<br>
+
 <table class="session_table">
     <thead>
         <th>Date</th>

@@ -8,8 +8,9 @@ app.secret_key = "liftlog_secret"
 #HOME page
 @app.route("/")
 def Home():
-    sessionData = db.GetAllSessions()
-    return render_template('index.html', sessions=sessionData)
+    sort = request.args.get('sort', 'date_desc')
+    sessionData = db.GetAllSessions(sort)
+    return render_template('index.html', sessions=sessionData, sort=sort)
 
 #LOGIN page
 @app.route('/login', methods=['GET', 'POST'])
@@ -83,5 +84,27 @@ def Edit(sess_id):
         return redirect('/')
     return render_template('edit.html', record=record)
 
+
+# Delete session 
+@app.route('/delete/<int:sess_id>')
+def Delete(sess_id):
+    #must be logged in
+    if session.get('username') is None:
+        return redirect('/')
+    record = db.GetSessionById(sess_id)
+    #only the person who logged it can delete it
+    if record['user_id'] == session['id']:
+        db.DeleteSession(sess_id)
+    return redirect('/')
+
+
+#my sessions page
+@app.route('/my_sessions')
+def MySessions():
+    #must be logged in
+    if session.get('username') is None:
+        return redirect('/')
+    myData = db.GetMySessions(session['id'])
+    return render_template('mysessions.html', sessions=myData)
 
 app.run(debug=True, port=5000)

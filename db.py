@@ -7,22 +7,31 @@ def GetDB():
         database.row_factory = sqlite3.Row
         return database
 
-def GetAllSessions():
+def GetAllSessions(sort='date_desc'):
     database = GetDB()
 
-    #Execute a JOIN query to combine data from the Sessions and Users tables.
-    sessions = database.execute('''
-        SELECT  Sessions.id, Sessions.user_id, Sessions.date,
-                Sessions.exercise, Sessions.sets, Sessions.reps,
-                Sessions.weight_kg, Users.username
+    #Choose order by based on sort option
+    if sort == 'date_asc':
+        order = 'Sessions.date ASC'
+    elif sort == 'exercise':
+        order = 'Sessions.exercise ASC'
+    elif sort == 'weight':
+        order = 'Sessions.weight_kg DESC'
+    else:
+        order = 'Sessions.date DESC'
+
+    sessions = database.execute(f'''
+        SELECT Sessions.id, Sessions.user_id, Sessions.date,
+               Sessions.exercise, Sessions.sets, Sessions.reps,
+               Sessions.weight_kg, Users.username
         FROM Sessions
         JOIN Users ON Sessions.user_id = Users.id
-        ORDER BY Sessions.date DESC
+        ORDER BY {order}
     ''').fetchall()
     database.close()
     return sessions
 
-def GetSessionByID(session_id):
+def GetSessionById(session_id):
     database = GetDB()
     #Filtered SELECT query to find one specific workout session by its ID number
     result = database.execute(
@@ -83,3 +92,12 @@ def DeleteSession(sess_id):
         'DELETE FROM Sessions WHERE id=?', (sess_id,)
     )
     database.commit()
+
+def GetMySessions(user_id):
+    database = GetDB()
+    sessions = database.execute(
+        'SELECT * FROM Sessions WHERE user_id=? ORDER BY date DESC',
+        (user_id,)
+    ).fetchall()
+    database.close()
+    return sessions
