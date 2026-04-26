@@ -134,3 +134,13 @@ h2{
     margin: 1rem 0 0.5rem;
     color: #2c6e49;
 }
+
+.error {
+    color: #c0392b;
+    background-color: #fde8e8;
+    border-left: 4px solid #c0392b;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-weight: bold;
+}

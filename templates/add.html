@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Log a Workout Session</h2>
+
+{% if error %}
+    <p class="error">{{ error }}</p>
+{% endif %}
+
+<form action="/add" method="post">
+    <label>Date:</label>
+    <input type="date" name="date" id="date">
+
+    <label>Exercise:</label>
+    <input type="text" name="exercise" id="exercise" placeholder="e.g. Bench Press">
+
+    <label>Sets:</label>
+    <input type="number" name="sets" id="sets" min="1" max="20">
+
+    <label>Reps per set:</label>
+    <input type="number" name="reps" id="reps" min="1" max="100">
+
+    <label>Weight (kg):</label>
+    <input type="number" name="weight_kg" id="weight_kg" min="0" step="0.5">
+
+    <input type="submit" value="Log Session">
+</form>
+{% endblock %}

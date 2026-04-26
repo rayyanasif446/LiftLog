@@ -54,3 +54,16 @@ def RegisterUser(username, password):
     )
     database.commit()
     return True
+
+
+def AddSession(user_id, date, exercise, sets, reps, weight_kg):
+    if not date or not exercise:
+        return False
+    database = GetDB()
+    database.execute(
+        'INSERT INTO Sessions(user_id, date, exercise, sets, reps, weight_kg)'
+        ' VALUES (?, ?, ?, ?, ?, ?)',
+        (user_id, date, exercise, sets, reps, weight_kg)
+    )
+    database.commit()
+    return True
