@@ -1,12 +1,12 @@
 const ASSETS = [
     "/",
-    "static/css/style.css",
-    "static/js/app.js",
-    "static/images/favicon.png",
-    "static/icons/icon-128x128.png",
-    "static/icons/icon-192x192.png",
-    "static/icons/icon-384x384.png",
-    "static/icons/icon-512x512.png"
+    "/static/css/style.css",
+    "/static/js/app.js",
+    "/static/images/favicon.png",
+    "/static/icons/icon-128x128.png",
+    "/static/icons/icon-192x192.png",
+    "/static/icons/icon-384x384.png",
+    "/static/icons/icon-512x512.png"
 ];
 const CACHE_NAME = "liftlog-v1";
 

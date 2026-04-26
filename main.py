@@ -99,7 +99,7 @@ def Delete(sess_id):
 
 
 #my sessions page
-@app.route('/my_sessions')
+@app.route('/mysessions')
 def MySessions():
     #must be logged in
     if session.get('username') is None:

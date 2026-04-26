@@ -34,13 +34,13 @@
     ],
     "screenshots": [
         {
-            "src": "icons/desktop.png",
+            "src": "icons/Desktop.png",
             "sizes": "1920x1080",
             "type": "image/png",
             "label": "Desktop view"
         },
         {
-            "src": "icons/mobile.png",
+            "src": "icons/Mobile.png",
             "sizes": "1080x1920",
             "type": "image/png",
             "form_factor": "narrow",
